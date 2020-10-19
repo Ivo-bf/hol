@@ -11,7 +11,8 @@ pipeline {
                     properties([pipelineTriggers([pollSCM('H * * * *')])]
                     }
                       //define scm connection for polling
-                git branch: BRANCH_NAME, credentialsId: 'my-credentials', url: 'ssh://'
+                git branch: BRANCH_NAME, credentialsId: 'my-credentials', url: 'https://github.com/Ivo-bf/hol.git'
+                
         stage('build') {
             steps {
                sh 'mvn clean'
