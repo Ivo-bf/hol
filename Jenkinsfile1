@@ -29,6 +29,8 @@ pipeline {
         def customImage = docker.build("ivof/holiday-pipeline")
         customImage1.push()
         customImage.push()
+        }
+        }
              }
         } 
     }
