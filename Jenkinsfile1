@@ -20,10 +20,16 @@ pipeline {
                 echo 'mvn test'
             }
         }
-        stage('deploy') {
-            steps {
-                echo 'deploy step'
-            }
-        }
+       stage ('build and publish image') {
+      steps {
+        script {
+        checkout scm
+        docker.withRegistry('', 'dockerUserID') {
+        def customImage1 = docker.build("ivof/holiday-pipeline:${env.BUILD_ID}")
+        def customImage = docker.build("ivof/holiday-pipeline")
+        customImage1.push()
+        customImage.push()
+             }
+        } 
     }
 }
