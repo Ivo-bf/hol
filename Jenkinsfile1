@@ -8,8 +8,7 @@ pipeline {
             steps {
                 //enable remote triggers
                 script {
-                    properties([pipelineTriggers([pollSCM('H * * * *')])])
-                    }
+                    properties([pipelineTriggers([pollSCM('H * * * *')])]
                 }
         stage('build') {
             steps {
@@ -35,4 +34,5 @@ pipeline {
              }
         } 
     }
+}
 }
