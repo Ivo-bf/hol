@@ -4,6 +4,12 @@ pipeline {
         maven'M2_HOME'
     }
     stages {
+     stage('Initialize') {
+            steps {
+                //enable remote triggers
+                script {
+                    properties([pipelineTriggers([pollSCM('H * * * *')])])
+                }
         stage('build') {
             steps {
                sh 'mvn clean'
