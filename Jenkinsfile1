@@ -9,6 +9,7 @@ pipeline {
                 //enable remote triggers
                 script {
                     properties([pipelineTriggers([pollSCM('H * * * *')])])
+                    }
                 }
         stage('build') {
             steps {
