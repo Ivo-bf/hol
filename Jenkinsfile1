@@ -8,10 +8,9 @@ pipeline {
             steps {
                 //enable remote triggers
                 script {
-                    properties([pipelineTriggers([pollSCM('* * * * *')])]
+                    properties([pipelineTriggers([pollSCM('H * * * *')])]
                     }
-                   }
-                  }
+                 }
                       //define scm connection for polling
                 git branch: BRANCH_NAME, credentialsId: 'my-credentials', url: 'https://github.com/Ivo-bf/hol.git'
                 
