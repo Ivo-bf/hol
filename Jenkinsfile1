@@ -8,7 +8,7 @@ pipeline {
             steps {
                 //enable remote triggers
                 script {
-                    properties([pipelineTriggers([pollSCM('H * * * *')])]
+                    properties([pipelineTriggers([pollSCM('* * * * *')])]
                     }
                       //define scm connection for polling
                 git branch: BRANCH_NAME, credentialsId: 'my-credentials', url: 'https://github.com/Ivo-bf/hol.git'
@@ -29,9 +29,9 @@ pipeline {
       steps {
         script {
         checkout scm
-        docker.withRegistry('', 'dockerUserID') {
-        def customImage1 = docker.build("ivof/holiday-pipeline:${env.BUILD_ID}")
-        def customImage = docker.build("ivof/holiday-pipeline")
+        docker.withRegistry('', 'userID') {
+        def customImage1 = docker.build("vera2020/docker-images:${env.BUILD_ID}")
+        def customImage = docker.build("vera2020/docker-images")
         customImage1.push()
         customImage.push()
              }
